@@ -28,7 +28,6 @@ class browser
 
     public function go($path, array $data = null)
     {
-
         curl_setopt($this->curl, CURLOPT_URL, $this->host . $path);
         curl_setopt($this->curl, CURLOPT_HEADER, true);
         curl_setopt($this->curl, CURLOPT_COOKIE, $this->rawCookie);
@@ -47,7 +46,7 @@ class browser
         if ($this->result) {
             preg_match_all($regexp, $this->result, $matches);
         }
-        return $matches[1];
+        return implode(', ', $matches[1]);
     }
 
     private function setCookie()
